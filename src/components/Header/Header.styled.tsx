@@ -16,3 +16,9 @@ export const Title = styled.div`
   font-size: 25px;
   color: var(--colors-text);
 `;
+
+export const Container = styled.div`
+  max-width: 1170px;
+  margin: auto;
+  padding: 0 15px;
+`;

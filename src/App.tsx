@@ -1,5 +1,5 @@
-import Header from './components/Header/Header';
-import Main from './components/Main/Main';
+import { Header } from './components/Header';
+import { Main } from './components/Main';
 import Details from './pages/Details';
 import HomePage from './pages/HomePage';
 import NotFound from './pages/NotFound';
