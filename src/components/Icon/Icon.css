@@ -1,0 +1,13 @@
+.icon {
+  display: inline-flex;
+  align-items: center;
+  text-align: center;
+
+ 
+}
+
+ .icon svg {
+   display: inline-block;
+   width: 100%;
+   height: max-content;
+ }
