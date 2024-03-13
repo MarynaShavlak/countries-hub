@@ -1,6 +1,5 @@
+import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useState } from 'react';
-import { useEffect } from 'react';
 import { AllCountries } from 'config';
 import { List } from '../components/List/List';
 import { Card } from '../components/Card';

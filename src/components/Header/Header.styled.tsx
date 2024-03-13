@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const HeaderEl = styled.header`
   box-shadow: var(--shadow);
@@ -11,10 +12,11 @@ export const Wrap = styled.div`
   align-items: center;
   padding: 20px 0;
 `;
-export const Title = styled.div`
+export const Title = styled(Link).attrs({ to: '/' })`
   font-weight: var(--fw-bold);
   font-size: 25px;
   color: var(--colors-text);
+  text-decoration: none;
 `;
 
 export const Container = styled.div`

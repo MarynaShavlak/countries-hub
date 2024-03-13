@@ -20,17 +20,21 @@ body[data-theme='dark'] {
   --colors-text: hsl(0, 0%, 100%);
   --colors-bg: hsl(207, 26%, 17%);
   --colors-label-bg: rgba(239, 241, 243, 0.837);
-  --colors-label-bg: rgba(149, 157, 165, 0.8);
+  --colors-label-bg-hover: rgb(210, 211, 213);
+  --colors-label-text: rgba(149, 157, 165, 0.8);
   --colors-ui-base: hsl(209, 23%, 22%);
   --shadow: rgba(245, 245, 245, 0.2) 0 0 8px;
+  --back-btn-shadow: 1px 1px 8px 1px rgb(190, 190, 190);
 }
 body[data-theme='light'] {
   --colors-text: hsl(200, 15%, 8%);
   --colors-bg: hsl(0, 0%, 98%);
   --colors-label-bg: rgba(149, 157, 165, 0.8);
+  --colors-label-bg-hover: rgb(120, 121, 123);
   --colors-label-text: rgb(41, 40, 40);
   --colors-ui-base: hsl(0, 0%, 100%);
   --shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  --back-btn-shadow: 1px 1px 8px 1px rgba(112, 111, 111, 1);
 }
 
 body {

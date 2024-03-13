@@ -7,7 +7,7 @@ export const Header = () => {
       <HeaderEl>
         <Container>
           <Wrap>
-            <Title>Where is the world</Title>
+            <Title to="/">Where is the world</Title>
             <ModeTheme />
           </Wrap>
         </Container>
