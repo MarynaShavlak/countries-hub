@@ -20,11 +20,11 @@ const Home = () => {
   const [filterCountries, setFilterCountries] = useState<Country[]>([]);
   const navigate = useNavigate();
 
-  const handleSearch = (search: string, region: string) => {
+  const handleSearch = (search: string, regions: string[]) => {
     let filteredData = [...countries];
-    if (region) {
+    if (regions.length) {
       filteredData = filteredData.filter(country =>
-        country.region.includes(region),
+        regions.includes(country.region),
       );
     }
     if (search) {

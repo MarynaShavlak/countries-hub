@@ -6,47 +6,54 @@ import { useState, useEffect } from 'react';
 import { Wrap } from './Controls.styled';
 import { CustomSelect } from './CustomSelect';
 import { useSelect } from 'hooks/useSelect';
-import { ETheme } from 'enums';
-import { useThemeContext } from 'hooks/useTheme';
 import { RegionSelect } from './Select/Select';
+import { RegionOption } from './Select/Select.types';
 
 interface ControlsProps {
-  onSearch: (search: string, region: string) => void;
+  onSearch: (search: string, region: string[]) => void;
 }
+
+const initialOptions: RegionOption[] = [];
 
 const Controls: FC<ControlsProps> = ({ onSearch }) => {
   const [search, setSearch] = useState('');
-  const [region, setRegion] = useState('');
+  const [regions, setRegions] = useState<string[]>([]);
+  const [selectedOptions, setSelectedOptions] =
+    useState<RegionOption[]>(initialOptions);
 
   useEffect(() => {
-    onSearch(search, region);
-  }, [search, region]);
+    onSearch(search, regions);
+  }, [search, regions]);
 
-  const themeState = useThemeContext();
-  const theme = !isNil(themeState) ? themeState.theme : ETheme.Light;
+  const handleRegionSelect = (chosenRegions: any) => {
+    console.log('chosenRegions: ', chosenRegions);
 
-  const { isSelectOpened, onBlur, onChange, onFocus, options, selectedOption } =
-    useSelect();
-
-  console.log('selectedOption: ', selectedOption);
-
-  const handleChange = (newValue: any) => {
-    if (newValue) {
-      setRegion(newValue.value);
-    } else {
-      setRegion('');
-    }
+    setSelectedOptions(prevOptions => [...prevOptions, chosenRegions]);
+    const labels = chosenRegions.map(
+      (region: { value: string; label: string }) => region.value,
+    );
+    console.log('labels: ', labels);
+    setRegions(labels);
+    console.log('regions: ', regions);
   };
 
   return (
     <Wrap>
       <Search search={search} onSearch={setSearch} />
-      <RegionSelect onChange={handleChange} />
+      <RegionSelect onChange={handleRegionSelect} />
     </Wrap>
   );
 };
 
 export default Controls;
+
+// const handleChange = (newValue: any) => {
+//   if (newValue) {
+//     setRegion(newValue.value);
+//   } else {
+//     setRegion('');
+//   }
+// };
 
 {
   /* <CustomSelect
