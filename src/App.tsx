@@ -1,7 +1,7 @@
 import Header from './components/Header/Header';
 import Main from './components/Main/Main';
 import Details from './pages/Details';
-import Home from './pages/Home';
+import HomePage from './pages/HomePage';
 import NotFound from './pages/NotFound';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ function App() {
       <Main>
         <Router>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/details/:name" element={<Details />} />
             <Route path="/notfound" element={<NotFound />} />
           </Routes>

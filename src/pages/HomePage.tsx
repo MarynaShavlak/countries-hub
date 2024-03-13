@@ -3,8 +3,8 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { AllCountries } from 'config';
 import { List } from '../components/List/List';
-import { Card } from '../components/Card/Card';
-import Controls from '../components/Controls/Controls';
+import { Card } from '../components/Card';
+import { Controls } from 'components/Controls';
 import { useNavigate } from 'react-router-dom';
 
 interface Country {
@@ -15,7 +15,7 @@ interface Country {
   flags: { png: string };
 }
 
-const Home = () => {
+const HomePage = () => {
   const [countries, setCountries] = useState<Country[]>([]);
   const [filterCountries, setFilterCountries] = useState<Country[]>([]);
   const navigate = useNavigate();
@@ -74,4 +74,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;
