@@ -17,6 +17,7 @@ export interface Country {
 const HomePage = () => {
   const [countries, setCountries] = useState<Country[]>([]);
   const [filterCountries, setFilterCountries] = useState<Country[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const navigate = useNavigate();
 
@@ -38,19 +39,21 @@ const HomePage = () => {
   const navigateToCountryDetails = (name: string) => {
     navigate(`/details/${encodeURIComponent(name)}`);
   };
+  const fetchData = async () => {
+    try {
+      const response = await axios.get<Country[]>(AllCountries);
+      const data = response.data;
+      console.log('request here');
+      setCountries(data);
+      setFilterCountries(data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get<Country[]>(AllCountries);
-        const data = response.data;
-        setCountries(data);
-        setFilterCountries(data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
     fetchData();
   }, []);
 
@@ -70,7 +73,7 @@ const HomePage = () => {
   return (
     <div>
       <Controls onSearch={handleSearch} />
-      <List>{renderCountryCards}</List>
+      {isLoading ? <p>Loading...</p> : <List>{renderCountryCards}</List>}
     </div>
   );
 };

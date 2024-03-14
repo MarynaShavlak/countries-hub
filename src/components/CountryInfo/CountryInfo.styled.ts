@@ -24,7 +24,7 @@ export const MetaWrap = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-export const CountryMeta = styled.ul`
+export const Meta = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -32,28 +32,12 @@ export const CountryMeta = styled.ul`
   margin: 0;
   padding: 0;
 `;
-export const CountryMetaItem = styled.li`
+export const MetaItem = styled.li`
   font-size: 14px;
   display: flex;
   align-items: center;
   gap: 5px;
   span:first-child {
     font-weight: 800;
-  }
-`;
-export const BordersList = styled.ul`
-  list-style: none;
-  display: flex;
-  gap: 15px;
-  margin: 0;
-  padding: 0;
-  padding-left: 10px;
-  li {
-    border-radius: var(--radii);
-    background-color: var(--colors-ui-base);
-    cursor: pointer;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    padding: 5px 10px;
   }
 `;

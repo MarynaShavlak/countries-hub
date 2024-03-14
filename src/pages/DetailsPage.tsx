@@ -12,8 +12,10 @@ type RouteParams = {
 
 const DetailsPage = () => {
   const [country, setCountry] = useState<CountryInfoProps | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const { name } = useParams<RouteParams>();
   const navigate = useNavigate();
+
   const moveToPreviousPage = () => {
     navigate(-1);
   };
@@ -28,6 +30,8 @@ const DetailsPage = () => {
         console.log('country: ', country);
       } catch (error) {
         console.error('Error fetching data:', error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -36,8 +40,14 @@ const DetailsPage = () => {
 
   return (
     <>
-      <BackButton onClick={moveToPreviousPage} />
-      {country && <CountryInfo {...country} />}
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <>
+          <BackButton onClick={moveToPreviousPage} />
+          {country && <CountryInfo {...country} />}
+        </>
+      )}
     </>
   );
 };

@@ -1,15 +1,14 @@
-import { FC, useState, useEffect } from 'react';
+import { FC, useState, useEffect, useMemo } from 'react';
+
 import axios from 'axios';
-import { capitalizeFirstLetter } from 'utils/capitalizeFirstLetter';
 import {
   Wrap,
   CountryImage,
   CountryTitle,
-  CountryMeta,
-  CountryMetaItem,
+  Meta,
+  MetaItem,
   InfoWrap,
   MetaWrap,
-  BordersList,
 } from './CountryInfo.styled';
 import { CountryInfoProps } from './CountryInfo.types';
 import {
@@ -19,6 +18,8 @@ import {
   getCountryCurrenciesString,
 } from 'utils';
 import { searchCountryByCode } from 'config';
+import { useNavigate } from 'react-router-dom';
+import { Borders } from './Borders';
 
 export const CountryInfo: FC<CountryInfoProps> = ({
   name,
@@ -33,26 +34,38 @@ export const CountryInfo: FC<CountryInfoProps> = ({
   borders,
 }) => {
   const [borderNames, setBorderNames] = useState<string[]>([]);
+  const navigate = useNavigate();
   console.log('borderNames: ', borderNames);
 
+  const navigateToCountryDetails = (name: string) => {
+    navigate(`/details/${encodeURIComponent(name)}`);
+  };
+
+  const renderBorders = useMemo(
+    () => (
+      <Borders borderNames={borderNames} onClick={navigateToCountryDetails} />
+    ),
+    [borderNames],
+  );
+
   useEffect(() => {
-    const fetchData = async (code: string) => {
+    const fetchData = async () => {
       try {
-        const response = await axios.get(searchCountryByCode(code));
-        const countryName = response.data[0].name.common;
-        setBorderNames(prevNames => {
-          if (!prevNames.includes(countryName)) {
-            return [...prevNames, countryName];
-          }
-          return prevNames;
-        });
+        const borderRequests = borders.map(border =>
+          axios.get(searchCountryByCode(border)),
+        );
+        const responses = await Promise.all(borderRequests);
+        const borderNames = responses
+          .map(response => response.data[0]?.name?.common)
+          .filter(Boolean);
+        setBorderNames(borderNames);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
 
     setBorderNames([]);
-    borders.forEach(border => fetchData(border));
+    fetchData();
   }, [borders]);
 
   return (
@@ -61,50 +74,46 @@ export const CountryInfo: FC<CountryInfoProps> = ({
       <InfoWrap>
         <CountryTitle>{name.official}</CountryTitle>
         <MetaWrap>
-          <CountryMeta>
-            <CountryMetaItem>
+          <Meta>
+            <MetaItem>
               <span>Native Name:</span>
               <span>{getCountryNativeNameString(name.nativeName)}</span>
-            </CountryMetaItem>
-            <CountryMetaItem>
+            </MetaItem>
+            <MetaItem>
               <span>Population:</span>
               <span>{population.toLocaleString()}</span>
-            </CountryMetaItem>
-            <CountryMetaItem>
+            </MetaItem>
+            <MetaItem>
               <span>Region:</span> <span>{region}</span>
-            </CountryMetaItem>
-            <CountryMetaItem>
+            </MetaItem>
+            <MetaItem>
               <span>Sub Region:</span> <span>{subregion}</span>
-            </CountryMetaItem>
-            <CountryMetaItem>
+            </MetaItem>
+            <MetaItem>
               <span>Capital:</span> <span>{capital}</span>
-            </CountryMetaItem>
-          </CountryMeta>
-          <CountryMeta>
-            <CountryMetaItem>
+            </MetaItem>
+          </Meta>
+          <Meta>
+            <MetaItem>
               <span>Top Level Domain:</span>
               <span>{getCountryDomainString(tld)}</span>
-            </CountryMetaItem>
-            <CountryMetaItem>
+            </MetaItem>
+            <MetaItem>
               <span>Currencies:</span>
               <span>{getCountryCurrenciesString(currencies)}</span>
-            </CountryMetaItem>
-            <CountryMetaItem>
+            </MetaItem>
+            <MetaItem>
               <span>Languages:</span>
               <span>{getCountryLanguagesString(languages)}</span>
-            </CountryMetaItem>
-          </CountryMeta>
+            </MetaItem>
+          </Meta>
         </MetaWrap>
-        <CountryMeta>
-          <CountryMetaItem>
+        <Meta>
+          <MetaItem>
             <span>Borders:</span>
-            <BordersList>
-              {borderNames.map((borderName, index) => (
-                <li key={index}>{borderName}</li>
-              ))}
-            </BordersList>
-          </CountryMetaItem>
-        </CountryMeta>
+            {renderBorders}
+          </MetaItem>
+        </Meta>
       </InfoWrap>
     </Wrap>
   );

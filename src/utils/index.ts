@@ -1,3 +1,5 @@
+export { generateUUID } from './generateUUID.ts';
+
 export {
   getCountryLanguagesString,
   getCountryNativeNameString,
