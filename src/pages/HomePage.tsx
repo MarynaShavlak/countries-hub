@@ -6,7 +6,7 @@ import { Card } from '../components/Card';
 import { Controls } from 'components/Controls';
 import { useNavigate } from 'react-router-dom';
 
-interface Country {
+export interface Country {
   name: { official: string };
   region: string;
   capital: string;
@@ -17,6 +17,7 @@ interface Country {
 const HomePage = () => {
   const [countries, setCountries] = useState<Country[]>([]);
   const [filterCountries, setFilterCountries] = useState<Country[]>([]);
+
   const navigate = useNavigate();
 
   const handleSearch = (search: string, regions: string[]) => {
@@ -42,8 +43,9 @@ const HomePage = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get<Country[]>(AllCountries);
-        setCountries(response.data);
-        setFilterCountries(response.data);
+        const data = response.data;
+        setCountries(data);
+        setFilterCountries(data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }

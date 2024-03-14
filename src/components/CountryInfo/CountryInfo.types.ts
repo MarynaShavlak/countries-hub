@@ -28,4 +28,5 @@ export interface CountryInfoProps {
   languages: {};
   currencies: { name: string };
   tld: string[];
+  borders: string[];
 }

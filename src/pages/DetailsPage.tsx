@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { searchCountry } from 'config';
+import { searchCountryByName } from 'config';
 import { useParams, useNavigate } from 'react-router-dom';
 import { BackButton } from './../components/BackButton/BackButton';
 import { CountryInfo } from 'components/CountryInfo';
@@ -13,9 +13,7 @@ type RouteParams = {
 const DetailsPage = () => {
   const [country, setCountry] = useState<CountryInfoProps | null>(null);
   const { name } = useParams<RouteParams>();
-  console.log('name : ', name);
   const navigate = useNavigate();
-
   const moveToPreviousPage = () => {
     navigate(-1);
   };
@@ -24,7 +22,7 @@ const DetailsPage = () => {
     if (!name) return;
     const fetchData = async () => {
       try {
-        const response = await axios.get(searchCountry(name));
+        const response = await axios.get(searchCountryByName(name));
         const country = response.data[0];
         setCountry(country);
         console.log('country: ', country);
@@ -40,7 +38,6 @@ const DetailsPage = () => {
     <>
       <BackButton onClick={moveToPreviousPage} />
       {country && <CountryInfo {...country} />}
-      <div>Details {name}</div>
     </>
   );
 };

@@ -3,4 +3,4 @@ export {
   getCountryNativeNameString,
   getCountryDomainString,
   getCountryCurrenciesString,
-} from './getCountryDataString.ts';
+} from './getCountryData.ts';
