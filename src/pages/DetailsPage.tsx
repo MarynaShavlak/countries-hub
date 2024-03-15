@@ -5,6 +5,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { BackButton } from './../components/BackButton/BackButton';
 import { CountryInfo } from 'components/CountryInfo';
 import { CountryInfoProps } from 'components/CountryInfo/CountryInfo.types';
+import { Loader } from 'components/Loader';
 
 type RouteParams = {
   name: string;
@@ -41,7 +42,7 @@ const DetailsPage = () => {
   return (
     <>
       {isLoading ? (
-        <p>Loading...</p>
+        <Loader />
       ) : (
         <>
           <BackButton onClick={moveToPreviousPage} />

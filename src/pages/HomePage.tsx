@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { AllCountries } from 'config';
 import { List } from '../components/List/List';
 import { Card } from '../components/Card';
 import { Controls } from 'components/Controls';
-import { useNavigate } from 'react-router-dom';
+import { Loader } from 'components/Loader';
 
 export interface Country {
   name: { official: string };
@@ -73,7 +74,7 @@ const HomePage = () => {
   return (
     <div>
       <Controls onSearch={handleSearch} />
-      {isLoading ? <p>Loading...</p> : <List>{renderCountryCards}</List>}
+      {isLoading ? <Loader /> : <List>{renderCountryCards}</List>}
     </div>
   );
 };
