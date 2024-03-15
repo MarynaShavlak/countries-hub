@@ -1,13 +1,33 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { IoSearch } from 'react-icons/io5';
-import { InputContainer, Input } from './Search.styled';
+// import { InputContainer, Input } from './Search.styled';
 import { SearchProps } from './Search.types';
 
 export const Search: FC<SearchProps> = ({ search, onSearch }) => {
+  const [isFocused, setIsFocused] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onSearch(e.target.value);
+  };
+  const handleFocus = () => {
+    setIsFocused(true);
+  };
+
+  const handleBlur = () => {
+    setIsFocused(false);
+  };
   return (
-    <InputContainer>
-      <IoSearch />
-      <Input onChange={e => onSearch(e.target.value)} value={search} />
-    </InputContainer>
+    <label className="bg-uiBase rounded-lg shadow-md flex items-center  py-2 px-4">
+      <IoSearch className={isFocused ? 'text-green-500' : 'text-gray-500'} />
+      <input
+        className="w-full py-2 px-3 bg-bg text-text border-none outline-none"
+        type="search"
+        placeholder="Search for a country..."
+        onChange={handleChange}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        value={search}
+      />
+    </label>
   );
 };

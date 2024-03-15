@@ -1,5 +1,5 @@
 import { FC, useState, useEffect } from 'react';
-import { Wrap } from './Controls.styled';
+// import { Wrap } from './Controls.styled';
 import { RegionSelect, RegionOptionProps } from 'components/RegionSelect';
 import { ControlsProps } from './Controls.types';
 import { Search } from 'components/Search';
@@ -29,9 +29,9 @@ export const Controls: FC<ControlsProps> = ({ onSearch }) => {
   };
 
   return (
-    <Wrap>
+    <div className="flex flex-col gap-4 mt-3 md:flex-row md:justify-between md:items-center">
       <Search search={search} onSearch={setSearch} />
       <RegionSelect onChange={handleRegionSelect} />
-    </Wrap>
+    </div>
   );
 };

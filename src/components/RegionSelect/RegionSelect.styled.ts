@@ -9,7 +9,7 @@ export const customStyles: StylesConfig = {
     border: 'none',
     height: '50px',
     boxShadow: 'var(--shadow)',
-    width: '500px',
+    width: '200px',
   }),
   option: (provided, state) => ({
     ...provided,

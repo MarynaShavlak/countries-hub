@@ -1,23 +1,26 @@
 import { FC } from 'react';
 import { capitalizeFirstLetter } from 'utils/capitalizeFirstLetter';
-import { Wrap, CardImage, CardMeta, CardMetaItem } from './Card.styled';
+// import { Wrap, CardImage, CardMeta, CardMetaItem } from './Card.styled';
 import { CardProps } from './Card.types';
 
 export const Card: FC<CardProps> = ({ img, name, info, onClick }) => {
   const renderCardMeta = Object.entries(info).map(([key, value]) => (
-    <CardMetaItem key={key}>
-      <span>{capitalizeFirstLetter(key)}</span>:{' '}
+    <li key={key}>
+      <span className="font-semibold">{capitalizeFirstLetter(key)}</span>:{' '}
       {key === 'population' ? (value as number).toLocaleString() : value}
-    </CardMetaItem>
+    </li>
   ));
 
   return (
-    <Wrap onClick={onClick}>
-      <CardImage src={img} alt={name} />
-      <div>
-        <h3>{name}</h3>
-        <CardMeta>{renderCardMeta}</CardMeta>
+    <div
+      className="rounded-lg bg-ui-base cursor-pointer overflow-hidden shadow-lg hover:shadow-xl transition  hover:scale-105  duration-300"
+      onClick={onClick}
+    >
+      <img src={img} alt={name} className="h-40 w-full object-cover" />
+      <div className="p-2.5">
+        <h3 className="font-bold text-xl mb-2.5">{name}</h3>
+        <ul className="flex flex-col gap-2 ">{renderCardMeta}</ul>
       </div>
-    </Wrap>
+    </div>
   );
 };
