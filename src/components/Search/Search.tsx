@@ -17,10 +17,10 @@ export const Search: FC<SearchProps> = ({ search, onSearch }) => {
     setIsFocused(false);
   };
   return (
-    <label className="bg-uiBase rounded-lg shadow-md flex items-center  py-2 px-4">
+    <label className="bg-uiBase rounded-lg shadow-md flex items-center  py-2 px-3 md:w-48">
       <IoSearch className={isFocused ? 'text-green-500' : 'text-gray-500'} />
       <input
-        className="w-full py-2 px-3 bg-bg text-text border-none outline-none"
+        className="w-full py-2 pl-3 bg-bg text-sm border-none outline-none"
         type="search"
         placeholder="Search for a country..."
         onChange={handleChange}

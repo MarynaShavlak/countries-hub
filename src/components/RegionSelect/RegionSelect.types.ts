@@ -5,4 +5,5 @@ export interface RegionOptionProps {
 
 export interface RegionSelectProps {
   onChange: (newValue: any) => void;
+  regionOptions: RegionOptionProps[];
 }

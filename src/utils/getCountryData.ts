@@ -32,3 +32,11 @@ export const getCountryCurrenciesString = (
   );
   return getSortedStringFromArray(currencyNames);
 };
+
+export const getCountryAreaString = (area: number): string => {
+  return `${area.toLocaleString()} km²`;
+};
+
+export const getCountryPopulationString = (population: number): string => {
+  return population.toLocaleString();
+};

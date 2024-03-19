@@ -12,6 +12,16 @@ module.exports = {
     extend: {
       colors: {
         uiBase: 'hsl(0, 0%, 100%)',
+        itemRed: '#f75852',
+        itemGreen: '#03a457',
+        itemViolet: '#635684',
+        itemBlue: '#2181ce',
+      },
+      minWidth: {
+        128: '32rem',
+      },
+      borderRadius: {
+        50: '50px',
       },
     },
   },

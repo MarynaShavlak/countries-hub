@@ -1,6 +1,6 @@
-import { RegionOptionProps } from '../RegionSelect.types';
+import { RegionOptionProps } from '../components/RegionSelect/RegionSelect.types';
 
-export const regionOptions: readonly RegionOptionProps[] = [
+export const regionOptions: RegionOptionProps[] = [
   { value: 'Africa', label: 'Africa' },
   { value: 'Americas', label: 'America' },
   { value: 'Asia', label: 'Asia' },

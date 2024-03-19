@@ -3,6 +3,7 @@ import { FC, useState, useEffect } from 'react';
 import { RegionSelect, RegionOptionProps } from 'components/RegionSelect';
 import { ControlsProps } from './Controls.types';
 import { Search } from 'components/Search';
+import { regionOptions } from 'data/regionOptionsData';
 
 const initialOptions: RegionOptionProps[] = [];
 
@@ -31,7 +32,10 @@ export const Controls: FC<ControlsProps> = ({ onSearch }) => {
   return (
     <div className="flex flex-col gap-4 mt-3 md:flex-row md:justify-between md:items-center">
       <Search search={search} onSearch={setSearch} />
-      <RegionSelect onChange={handleRegionSelect} />
+      <RegionSelect
+        onChange={handleRegionSelect}
+        regionOptions={regionOptions}
+      />
     </div>
   );
 };

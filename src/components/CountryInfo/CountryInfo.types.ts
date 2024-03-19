@@ -24,7 +24,9 @@ export interface CountryInfoProps {
   subregion: string;
   capital: string;
   population: number;
+  area: number;
   flags: { png: string; svg: string; alt: string };
+  coatOfArms: { png: string; svg: string };
   languages: {};
   currencies: { name: string };
   tld: string[];
