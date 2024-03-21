@@ -31,4 +31,5 @@ export interface CountryInfoProps {
   currencies: { name: string };
   tld: string[];
   borders: string[];
+  maps: { googleMaps: string };
 }
