@@ -58,15 +58,15 @@ export const CountryInfo: FC<CountryInfoProps> = ({
   return (
     <>
       <HeaderCountry name={name} coatOfArms={coatOfArms} />
-      <div className="mt-10 flex gap-10">
+      <div className="mt-10 flex gap-10  flex-col lg:flex-row">
         <DetailsCountry
           capital={capital}
           population={population}
           area={area}
           currencies={currencies}
         />
-        <div className="grid grid-cols-2 gap-10 items-start">
-          <img className=" w-400 h-300 " src={svg} alt={alt} />
+        <div className="md:grid  md:grid-cols-2 gap-10 items-start">
+          <img className="lg:w-400 lg:h-300 sm:mb-10" src={svg} alt={alt} />
           <div>
             <AdditionalInfoCountry
               name={name}

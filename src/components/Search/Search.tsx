@@ -1,6 +1,5 @@
 import { FC, useState } from 'react';
 import { IoSearch } from 'react-icons/io5';
-// import { InputContainer, Input } from './Search.styled';
 import { SearchProps } from './Search.types';
 
 export const Search: FC<SearchProps> = ({ search, onSearch }) => {
@@ -17,8 +16,12 @@ export const Search: FC<SearchProps> = ({ search, onSearch }) => {
     setIsFocused(false);
   };
   return (
-    <label className="bg-uiBase rounded-lg shadow-md flex items-center  py-2 px-3 md:w-48">
-      <IoSearch className={isFocused ? 'text-green-500' : 'text-gray-500'} />
+    <label
+      className={`bg-uiBase rounded-lg shadow-md flex items-center border-2 transition-colors py-2 px-3 md:w-48 ${
+        isFocused ? 'border-green' : 'border-transparent hover:border-gray-400 '
+      }`}
+    >
+      <IoSearch className={isFocused ? 'text-green' : 'text-gray-500'} />
       <input
         className="w-full py-2 pl-3 bg-bg text-sm border-none outline-none"
         type="search"

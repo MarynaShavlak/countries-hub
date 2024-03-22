@@ -3,7 +3,6 @@ import { useLocalStorage } from 'usehooks-ts';
 import { IoMoon } from 'react-icons/io5';
 import { FaSun } from 'react-icons/fa';
 import { ModeThemeProps, ThemeOptions } from './ModeTheme.types';
-// import { ModeBtn } from './ModeTheme.styled';
 
 export const ModeTheme: FC<{ initialTheme?: ModeThemeProps }> = ({
   initialTheme = ThemeOptions.Light,

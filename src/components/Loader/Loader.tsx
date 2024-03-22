@@ -5,7 +5,7 @@ export const Loader = () => (
     visible={true}
     height="100"
     width="100"
-    color="#5a5f5a"
+    color="#03a457"
     ariaLabel="rotating-square-loading"
     wrapperStyle={{
       justifyContent: 'center',

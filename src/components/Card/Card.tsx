@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import { capitalizeFirstLetter } from 'utils/capitalizeFirstLetter';
-// import { Wrap, CardImage, CardMeta, CardMetaItem } from './Card.styled';
 import { CardProps } from './Card.types';
 
 export const Card: FC<CardProps> = ({ img, name, info, onClick }) => {

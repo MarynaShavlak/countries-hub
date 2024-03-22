@@ -93,8 +93,8 @@ export const RegionSelect: FC<RegionSelectProps> = ({
       classNames={{
         control: ({ isFocused }) =>
           clsx(
-            isFocused ? controlStyles.focus : controlStyles.nonFocus,
             controlStyles.base,
+            isFocused ? controlStyles.focus : controlStyles.nonFocus,
           ),
         placeholder: () => placeholderStyles,
         input: () => selectInputStyles,
@@ -105,8 +105,20 @@ export const RegionSelect: FC<RegionSelectProps> = ({
         multiValueRemove: () => multiValueRemoveStyles,
         indicatorsContainer: () => indicatorsContainerStyles,
         clearIndicator: () => clearIndicatorStyles,
-        indicatorSeparator: () => indicatorSeparatorStyles,
-        dropdownIndicator: () => dropdownIndicatorStyles,
+        indicatorSeparator: ({ isFocused }) =>
+          clsx(
+            isFocused
+              ? indicatorSeparatorStyles.focus
+              : indicatorSeparatorStyles.base,
+          ),
+        dropdownIndicator: ({ isFocused }) =>
+          clsx(
+            isFocused
+              ? dropdownIndicatorStyles.focus
+              : dropdownIndicatorStyles.nonFocus,
+            dropdownIndicatorStyles.base,
+          ),
+
         menu: () => menuStyles,
         groupHeading: () => groupHeadingStyles,
         option: ({ isFocused, isSelected }) =>

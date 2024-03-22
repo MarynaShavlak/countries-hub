@@ -14,6 +14,7 @@ module.exports = {
         uiBase: 'hsl(0, 0%, 100%)',
         red: '#f75852',
         green: '#03a457',
+        greenLight: '#03a456ab',
         violet: '#635684',
         blue: '#2181ce',
         yellow: '#ffde0b',

@@ -1,17 +1,17 @@
 import { FC } from 'react';
-import { ButtonStyled } from './BackButton.styled';
 import { BackButtonProps } from './BackButton.types';
-import { IoMdArrowRoundBack } from 'react-icons/io';
+import { MdOutlineKeyboardArrowLeft } from 'react-icons/md';
 
 export const BackButton: FC<BackButtonProps> = ({ onClick }) => {
   return (
-    <ButtonStyled
+    <button
+      className="text-green font-bold flex text-2xl items-center transition-colors hover:text-red"
       type="button"
       onClick={onClick}
       aria-label="Back to previous page"
     >
-      <IoMdArrowRoundBack />
+      <MdOutlineKeyboardArrowLeft className="w-8 h-8" />
       Back
-    </ButtonStyled>
+    </button>
   );
 };

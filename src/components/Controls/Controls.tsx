@@ -1,5 +1,4 @@
 import { FC, useState, useEffect } from 'react';
-// import { Wrap } from './Controls.styled';
 import { RegionSelect, RegionOptionProps } from 'components/RegionSelect';
 import { ControlsProps } from './Controls.types';
 import { Search } from 'components/Search';

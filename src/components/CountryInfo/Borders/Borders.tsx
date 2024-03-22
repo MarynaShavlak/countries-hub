@@ -4,9 +4,9 @@ import { BordersListProps } from './Borders.types';
 
 export const Borders: FC<BordersListProps> = ({ borderNames, onClick }) => {
   return (
-    <div className="flex gap-4 items-center col-span-2">
-      <span className="font-extrabold">Borders:</span>
-      <ul className="flex  gap-4 flex-wrap ">
+    <div className="md:flex gap-4 items-center md:col-span-2">
+      <p className="sm:text-center font-extrabold sm:mb-4 md:mb-0">Borders:</p>
+      <ul className="flex  gap-4 flex-wrap justify-center md:justify-start">
         {borderNames.map(borderName => (
           <BorderItem
             key={borderName}

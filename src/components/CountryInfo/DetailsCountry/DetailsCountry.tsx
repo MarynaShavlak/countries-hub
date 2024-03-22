@@ -16,7 +16,7 @@ export const DetailsCountry: FC<DetailsCountryProps> = ({
   area,
   currencies,
 }) => (
-  <ul className="flex flex-col  gap-4 min-w-60">
+  <ul className="grid sm:grid-cols-1  md:grid-cols-2 lg:flex lg: flex-col gap-4 min-w-60">
     <li className="flex gap-4  py-2  px-4  items-center rounded-50  text-white bg-red">
       <MdLocationCity className="w-8 h-8" />
       <div>
