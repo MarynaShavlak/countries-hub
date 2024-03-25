@@ -34,7 +34,7 @@ export const ImageModal: FC<ImageModalProps> = ({
       style={customStyles}
       ariaHideApp={false}
     >
-      <img src={imageSrc} alt="Coat of arms" />
+      <img src={imageSrc} alt="Coat of arms" className="w-3/4 mx-auto" />
     </Modal>
   );
 };
