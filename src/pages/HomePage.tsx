@@ -6,6 +6,7 @@ import { List } from '../components/List/List';
 import { Card } from '../components/Card';
 import { Controls } from 'components/Controls';
 import { Loader } from 'components/Loader';
+import { NoDataMessage } from 'components/NoDataMessage';
 
 export interface Country {
   name: { official: string };
@@ -74,7 +75,17 @@ const HomePage = () => {
   return (
     <div>
       <Controls onSearch={handleSearch} />
-      {isLoading ? <Loader /> : <List>{renderCountryCards}</List>}
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          {!filterCountries.length ? (
+            <NoDataMessage />
+          ) : (
+            <List>{renderCountryCards}</List>
+          )}
+        </>
+      )}
     </div>
   );
 };

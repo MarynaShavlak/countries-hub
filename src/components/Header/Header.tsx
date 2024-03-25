@@ -1,19 +1,22 @@
 import { ModeTheme } from 'components/ModeTheme';
 import { Link } from 'react-router-dom';
+import { TbWorldHeart } from 'react-icons/tb';
 
 export const Header = () => {
   return (
-    <div>
-      <header className="shadow-md bg-ui-base">
-        <div className="w-[288px] mx-auto px-4 md:w-[736px] lg:w-[1168px]">
-          <div className="flex justify-between items-center py-5">
-            <Link to="/" className="font-bold text-2xl no-underline">
-              Where is the world
-            </Link>
-            <ModeTheme />
-          </div>
+    <header className="fixed z-10 w-full shadow-xl dark:shadow-dark bg-greenLight dark:bg-darkMain">
+      <div className="w-[288px] mx-auto px-4 md:w-[736px] lg:w-[1168px]">
+        <div className="flex justify-between items-center py-5">
+          <Link
+            to="/"
+            className="font-bold text-md md:text-2xl no-underline flex gap-4 items-center text-uiBaseBlack dark:text-greenLight"
+          >
+            <TbWorldHeart className="w-8 h-8 md:w-12 md:h-12" />
+            Where is the world
+          </Link>
+          <ModeTheme />
         </div>
-      </header>
-    </div>
+      </div>
+    </header>
   );
 };

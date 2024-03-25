@@ -5,7 +5,7 @@ import { MdOutlineKeyboardArrowLeft } from 'react-icons/md';
 export const BackButton: FC<BackButtonProps> = ({ onClick }) => {
   return (
     <button
-      className="text-green font-bold flex text-2xl items-center transition-colors hover:text-red"
+      className="text-green font-bold flex text-2xl items-center transition-colors hover:text-red dark:text-uiBaseWhite dark:hover:text-red"
       type="button"
       onClick={onClick}
       aria-label="Back to previous page"

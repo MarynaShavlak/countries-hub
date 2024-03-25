@@ -16,12 +16,16 @@ export const ModeTheme: FC<{ initialTheme?: ModeThemeProps }> = ({
   };
 
   useEffect(() => {
-    document.body.setAttribute('data-theme', theme);
+    if (theme === ThemeOptions.Dark) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
   }, [theme]);
 
   return (
     <button
-      className="cursor-pointer flex items-center justify-center"
+      className="cursor-pointer flex items-center justify-center text-uiBaseBlack dark:text-greenLight"
       onClick={toggleTheme}
       type="button"
     >

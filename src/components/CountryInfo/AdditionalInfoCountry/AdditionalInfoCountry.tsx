@@ -13,7 +13,7 @@ export const AdditionalInfoCountry: FC<AdditionalInfoCountryProps> = ({
   tld,
   languages,
 }) => (
-  <ul className="flex flex-col gap-3">
+  <ul className="flex flex-col gap-3 dark:text-uiBaseWhite">
     <li>
       <span className="font-extrabold">Native Name: </span>
       <span>{getCountryNativeNameString(name.nativeName)}</span>
