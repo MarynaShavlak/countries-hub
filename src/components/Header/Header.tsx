@@ -9,7 +9,7 @@ export const Header = () => {
         <div className="flex justify-between items-center py-5">
           <Link
             to="/"
-            className="font-bold text-md md:text-2xl no-underline flex gap-4 items-center text-uiBaseBlack dark:text-greenLight"
+            className="font-bold text-md md:text-2xl no-underline flex gap-4 items-center text-uiBaseBlack dark:text-greenLight hover:text-uiBaseWhite dark:hover:text-uiBaseWhite transition-colors"
           >
             <TbWorldHeart className="w-8 h-8 md:w-12 md:h-12" />
             Where is the world

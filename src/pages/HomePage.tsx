@@ -45,7 +45,6 @@ const HomePage = () => {
     try {
       const response = await axios.get<Country[]>(AllCountries);
       const data = response.data;
-      console.log('request here');
       setCountries(data);
       setFilterCountries(data);
     } catch (error) {

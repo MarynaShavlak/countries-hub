@@ -28,7 +28,6 @@ const DetailsPage = () => {
         const response = await axios.get(searchCountryByName(name));
         const country = response.data[0];
         setCountry(country);
-        console.log('country: ', country);
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {

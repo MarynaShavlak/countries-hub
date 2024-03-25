@@ -8,6 +8,7 @@ import { HeaderCountry } from './HeaderCountry';
 import { DetailsCountry } from './DetailsCountry';
 import { AdditionalInfoCountry } from './AdditionalInfoCountry';
 import { ShowOnMapBtn } from './ShowOnMapBtn/ShowOnMapBtn';
+import { ImageModal } from './ImageModal';
 
 export const CountryInfo: FC<CountryInfoProps> = ({
   name,
@@ -25,8 +26,14 @@ export const CountryInfo: FC<CountryInfoProps> = ({
   maps: { googleMaps },
 }) => {
   const [borderNames, setBorderNames] = useState<string[]>([]);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
   const navigate = useNavigate();
-  console.log('borderNames: ', borderNames);
 
   const navigateToCountryDetails = (name: string) => {
     navigate(`/details/${encodeURIComponent(name)}`);
@@ -66,7 +73,12 @@ export const CountryInfo: FC<CountryInfoProps> = ({
           currencies={currencies}
         />
         <div className="md:grid  md:grid-cols-2 gap-10 items-start">
-          <img className="lg:w-400 lg:h-300 sm:mb-10" src={svg} alt={alt} />
+          <img
+            className="lg:w-400 lg:h-300 sm:mb-10 cursor-zoom-in"
+            src={svg}
+            alt={alt}
+            onClick={openModal}
+          />
           <div>
             <AdditionalInfoCountry
               name={name}
@@ -85,6 +97,11 @@ export const CountryInfo: FC<CountryInfoProps> = ({
           )}
         </div>
       </div>
+      <ImageModal
+        modalIsOpen={modalIsOpen}
+        closeModal={closeModal}
+        imageSrc={svg}
+      />
     </>
   );
 };
